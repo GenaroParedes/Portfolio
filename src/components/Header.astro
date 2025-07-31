@@ -1,23 +1,92 @@
 ---
 import Enlaces from "./Enlaces.astro";
+import HomeIcon from "./Icons/HomeIcon.astro";
+import UserIcon from "./Icons/UserIcon.astro";
+import ProjectIcon from "./Icons/ProjectIcon.astro";
+import ContactIcon from "./Icons/ContactIcon.astro";
+import HamburguesaIcon from "./Icons/HamburguesaIcon.astro";
+import ExitIcon from "./Icons/ExitIcon.astro";
 ---
 
-<header class="fixed top-0 left-0 w-full bg-gray-900/80 z-50 shadow-md">
-    <nav class="flex justify-center items-center gap-x-10 py-4">
-        <Enlaces href={"#home"} title={"Inicio"} />
-        <Enlaces href={"#about"} title={"Sobre mí"} />
-        <Enlaces href={"#projects"} title={"Proyectos"} />
-        <Enlaces href={"#contact"} title={"Contacto"} />
-    </nav>
+<header class="fixed top-0 w-full bg-gray-900/80 z-50 shadow-md">
+    <div class="mx-auto flex justify-between items-center py-6 w-xs sm:w-xl md:w-2xl lg:w-4xl">
+        <div class="">
+            <p class="font-extrabold text-3xl text-blue-400">&lt;G/P&gt;</p>
+        </div>
+
+        <!-- NAV para pantallas grandes -->
+        <nav class="hidden md:flex justify-center items-center gap-x-10">
+            <Enlaces class="scale-90 hover:scale-110 hover:text-blue-400 text-lg font-medium flex items-center gap-2 transition" href={"#home"} title={"Inicio"}><HomeIcon class='h-5 w-5'/></Enlaces>
+            <Enlaces class="scale-90 hover:scale-110 hover:text-blue-400 text-lg font-medium flex items-center gap-2 transition" href={"#about"} title={"Sobre mí"}><UserIcon class='h-5 w-5 scale-90'/></Enlaces>
+            <Enlaces class="scale-90 hover:scale-110 hover:text-blue-400 text-lg font-medium flex items-center gap-2 transition" href={"#projects"} title={"Proyectos"}><ProjectIcon class='h-5 w-5'/></Enlaces>
+            <Enlaces class="scale-90 hover:scale-110 hover:text-blue-400 text-lg font-medium flex items-center gap-2 transition" href={"#contact"} title={"Contacto"}><ContactIcon class='h-5 w-5'/></Enlaces>
+        </nav>
+
+        <!-- Botón hamburguesa (abre menú) -->
+        <div id="openMenu" class="md:hidden">
+            <HamburguesaIcon class='h-10 w-10 cursor-pointer'>
+        </div>
+
+        <!-- Botón X (cierra menú) -->
+        <div id="exitMenu" class="hidden md:hidden">
+            <ExitIcon class='h-10 w-10 cursor-pointer'/>
+        </div>
+
+        <!-- Menú móvil -->
+        <div 
+            id="mobileMenu"
+            class="fixed top-20 left-0 right-0 w-full z-40 rounded-none bg-gray-900/90 border-y border-white/10 shadow-md px-6 py-5 md:hidden translate-x-full transition-transform duration-300"
+            >
+            <ul class="flex flex-col gap-5 text-sm font-medium">
+                <li>
+                    <Enlaces href={"#home"} class="mobileMenu-enlace hover:text-blue-400 text-lg font-medium flex items-center gap-2 transition w-22"><HomeIcon/>Inicio</Enlaces>
+                </li>
+                <li>
+                    <Enlaces href={"#about"} class="mobileMenu-enlace hover:text-blue-400 text-lg font-medium flex items-center gap-2 transition w-27"><UserIcon/>Sobre mí</Enlaces>
+                </li>
+                <li>
+                    <Enlaces href={"#projects"} class="mobileMenu-enlace hover:text-blue-400 text-lg font-medium flex items-center gap-2 transition w-30"><ProjectIcon/>Proyectos</Enlaces>
+                </li>
+                <li>
+                    <Enlaces href={"#contact"} class="mobileMenu-enlace hover:text-blue-400 text-lg font-medium flex items-center gap-2 transition w-27"><ContactIcon/>Contacto</Enlaces>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script is:inline>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const buttonOpenMenu = document.getElementById('openMenu');
+        const buttonExitMenu = document.getElementById('exitMenu');
+        const linksMobileMenu = document.querySelectorAll('.mobileMenu-enlace');
+
+        buttonOpenMenu.addEventListener('click', () => {
+            abrirMenu();
+        });
+
+        buttonExitMenu.addEventListener('click', () => {
+            cerrarMenu();
+        });
+
+        linksMobileMenu.forEach(link => {
+            link.addEventListener('click', () => {
+                cerrarMenu();
+            })
+        });
+
+        function cerrarMenu(){
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full');
+            buttonExitMenu.classList.add('hidden');
+            buttonOpenMenu.classList.remove('hidden');
+        }
+
+        function abrirMenu(){
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            buttonOpenMenu.classList.add('hidden');
+            buttonExitMenu.classList.remove('hidden');
+        }
+    </script>
 </header>
 
-<!-- <header class="flex justify-center items-center w-full sm:w-xl md:w-2xl lg:w-4xl mx-auto py-5">
-    
-
-    <nav class="flex flex-row  gap-x-10 mr-2 sm:mr-0 fixed">
-        <Enlaces href={"/"} title={"Inicio"}/>
-        <Enlaces href={"#about"} title={"Sobre mí"}/>
-        <Enlaces href={"#projects"} title={"Proyectos"}/>
-        <Enlaces href={"#contact"} title={"Contacto"}/>
-    </nav>
-</header> -->
