@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Insignia from '../components/Insignia.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import About from '../components/About.astro';
+import ButtonHeader from '../components/ButtonHeader.astro';
+import LinkedInIcon from '../components/Icons/LinkedIn.astro';
+import GitHubIcon from '../components/Icons/GitHub.astro';
+import EmailIcon from '../components/Icons/Email.astro';
+import WhatsAppIcon from '../components/Icons/WhatsApp.astro';
+import CVIcon from '../components/Icons/CVIcon.astro';
+import SkillsCards from '../components/SkillsCards.astro';
+import ProjectsArray from '../components/ProjectsArray.astro';
+
+
+
+const title = 'Portfolio de Genaro Paredes - Desarrollador y Programador Web';
+const description = 'Contrata a Genaro Paredes para crear tu aplicacion web. Desarrollador Web. Especializado en crear aplicaciones web únicas.';
+---
+
+<Layout title={title} description={description}>
+    <main>
+        <div id="home">
+            <SectionContainer ancho={'lg:w-4xl'}>
+                <div >
+                    <img class="rounded-full w-20 h-20 mb-2 sm:ml-3" src="../../src/assets/FotoPerfil.webp" alt="Foto Perfil">
+                    <h1 class="flex flex-col md:flex-row text-2xl sm:text-5xl font-extrabold items-start md:items-center gap-6 pb-5">
+                        <span>Hola, soy Genaro Paredes👋</span>
+                        <Insignia>En búsqueda de trabajo</Insignia>
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl opacity-80 text-left">
+                        <span class="bg-gradient-to-r from-purple-500 to-blue-500 text-transparent bg-clip-text">Frontend Developer Jr.</span>
+                        con una fuerte base en React, HTML, CSS y JavaScript.
+                        <span class="text-red-300/70 opacity-70"><br />De Córdoba, Argentina. </span> 
+                        <span>Me apasiona construir interfaces web modernas y responsivas.</span>
+                    </h2>
+                    <nav class="py-5 flex gap-2 flex-wrap justify-start mb-10">
+                        <ButtonHeader href={'https://www.linkedin.com/in/genaro-paredes-6b5785238/'}>
+                            <LinkedInIcon class='h-5 w-5'/>
+                            LinkedIn
+                        </ButtonHeader>
+                        <ButtonHeader href={'https://github.com/GenaroParedes'}>
+                            <GitHubIcon class='h-5 w-5'/>
+                            GitHub
+                        </ButtonHeader>
+                        <ButtonHeader href={'https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSGKnPRQFrDMsdHKNGfMzgJVsHNTCSCNtDCjTPtpvxnRsMJzfGFPSFCWHNwSDgmDVfjshkdB'}>
+                            <EmailIcon class='h-5 w-5'/>
+                            Genaroparedes77@gmail.com
+                        </ButtonHeader>
+                        <ButtonHeader href={'https://wa.me/5493534244272'}>
+                            <WhatsAppIcon class='h-5 w-5'/>
+                            WhatsApp
+                        </ButtonHeader>
+                        <ButtonHeader href={'/cv/Genaro-Paredes_CV.pdf'}>
+                            <CVIcon class='h-5 w-5'/>
+                            Descargar CV
+                        </ButtonHeader>
+                    </nav>
+                </div>
+                
+            </SectionContainer>
+        </div>
+        <div id="about">
+            <SectionContainer ancho={'lg:w-4xl'}>
+                <h2 id="about" class="text-xl sm:text-4xl font-bold mb-6 sm:mb-8 mx-auto">Sobre mí</h2>
+                <About />
+                <div class="pt-15 w-full">
+                    <h2 class="text-xl sm:text-4xl font-bold mb-10 sm:mb-12 text-center">Habilidades</h2>
+                </div>
+                <div class="flex flex-wrap justify-center gap-5 mb-10">
+                    <SkillsCards/>
+                </div>
+            </SectionContainer>
+        </div>
+        <div id="projects">
+            <SectionContainer ancho={'lg:w-5xl'}>
+                <h2 id="projects" class="text-xl sm:text-4xl font-bold mb-10 sm:mb-12 text-center mx-auto">Proyectos</h2>
+                <div class="flex flex-wrap gap-10 justify-center mx-auto">
+                    <ProjectsArray  />
+                </div>
+            </SectionContainer>
+        </div>
+        <div id="contact">
+            <SectionContainer ancho={'lg:w-5xl'}>
+                <h2 class="text-xl sm:text-4xl font-bold mb-10 sm:mb-12 text-center mx-auto">Contacto</h2>
+                <form class='w-full p-8  dark:bg-gray-800/5 rounded-lg shadow-[1px_2px_5px_rgba(120,119,198,0.15)] hover:shadow-[2px_3px_7px_rgba(120,119,198,0.25)] transition-shadow duration-500 mb-10' action="https://formsubmit.co/genaroparedes77@gmail.com" method="POST">
+                    <div class="sm:flex w-full gap-4 mb-5 sm:mb-0">
+                        <div class="flex flex-col flex-1/2 mb-5">
+                            <label class="w-20 py-2 font-bold" for="nombre">Nombre</label>
+                            <input class="pl-3 py-3 text-white border border-blue-400 focus:outline-none focus:border-blue-500/60 bg-gray-700 rounded-xl font-bold text-base" id="nombre" type="text" name="nombre" placeholder="Joe" required>
+                        </div>
+                        <div class="flex flex-col flex-1/2 ">
+                            <label class="w-20 py-2 font-bold" for="apellido">Apellido</label>
+                            <input class="pl-3 py-3 text-white border border-blue-400 focus:outline-none focus:border-blue-500/60 bg-gray-700 rounded-xl font-bold text-base" id="apellido" type="text" name="apellido" placeholder="Dohn" required>
+                        </div>
+                    </div>
+                    <div class="w-full flex flex-col mb-5">
+                        <label class="w-20 py-2 font-bold" for="email">Email</label>
+                        <input class="pl-3 py-3 text-white border border-blue-400 focus:outline-none focus:border-blue-500/60 bg-gray-700 rounded-xl font-bold text-base" id="email" type="email" name="email" placeholder="JoeDohn@gmail.com" required>
+                    </div>
+                    <div class="w-full flex flex-col mb-10">
+                        <label class="w-20 py-2 font-bold" for="mensaje">Mensaje</label>
+                        <textarea class="pl-3 py-3 text-white border border-blue-400 focus:outline-none focus:border-blue-500/60 bg-gray-700 rounded-xl font-bold text-base" id="mensaje" name="mensaje" rows="5" placeholder="Ingrese su mensaje"></textarea>
+                    </div>
+                    <div class="flex justify-center">
+                        <button id="buttonForm" class="px-15 py-2 inline-block mx-auto dark:bg-gray-700 dark:text-blue-400 border border-blue-400 rounded-md cursor-pointer hover:bg-gray-800 font-bold" type="submit">Enviar</button>
+                    </div>
+                </form>
+            </SectionContainer>
+        </div>
+    </main>
+</Layout>
+
+
+<script is:inline>
+    const cards = document.querySelectorAll('.card');
+    const buttonForm = document.getElementById('buttonForm');
+
+    // buttonForm.addEventListener('click', () => {
+
+    // })
+
+    cards.forEach(card => {
+        const spotlight = card.querySelector('.spotlight');
+
+        card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            spotlight.style.opacity = '1';
+            spotlight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(255,182,255,.15), transparent 40%)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            spotlight.style.opacity = '0';
+        });
+    });
+</script>

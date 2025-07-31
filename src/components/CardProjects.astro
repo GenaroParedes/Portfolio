@@ -1,0 +1,27 @@
+---
+import ButtonCardProject from './ButtonCardProject.astro';
+
+interface Project {
+    title: string;
+    parrafo: string;
+    src: string;
+    alt: string;
+    urlCodigo: string;
+    urlDemo: string;
+}
+
+const { project } = Astro.props as { project: Project };
+---
+
+
+<div class="transform hover:-translate-y-1 border border-gray-700 bg-gradient-to-r from-black to-gray-900 p-4 rounded-lg max-w-2xs shadow-[2px_3px_7px_rgba(120,119,198,0.15)] hover:shadow-[5px_8px_15px_rgba(120,119,198,0.25)]  duration-600">
+    <img class="rounded-sm min-h-40" src={project.src} alt={project.alt}>
+    <div class="flex flex-col justify-between h-62">
+        <h3 class=" text-lg font-bold mt-2">{project.title}</h3>
+        <p class="">{project.parrafo}</p>
+        <div class="flex justify-center mx-auto gap-5">
+            <ButtonCardProject title="Codigo" url={project.urlCodigo}/>
+            <ButtonCardProject title="Ver Demo" url={project.urlDemo}/>
+        </div>
+    </div>
+</div>

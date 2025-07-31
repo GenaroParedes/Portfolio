@@ -1,0 +1,17 @@
+---
+interface Props {
+    title: string;
+    url: string;
+}
+
+const {title, url} = Astro.props;
+---
+
+<a 
+    href={url} 
+    target="_blank"
+    rel="noopener noreferrer"
+    class="dark:bg-gray-700 dark:text-blue-400 border border-blue-400 py-2 px-4 rounded-md cursor-pointer hover:bg-gray-800 font-bold"
+    >
+    {title}
+</a>
